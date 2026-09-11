@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+// 1. Interface definition
+interface Calculator {
+    void add(double a, double b);
+    void subtract(double a, double b);
+    void multiply(double a, double b);
+    void divide(double a, double b);
+}
+
+// 2. Class implementing the interface
+class SimpleCalculator implements Calculator {
+    @Override
+    public void add(double a, double b) {
+        System.out.println("Addition = " + (a + b));
+    }
+
+    @Override
+    public void subtract(double a, double b) {
+        System.out.println("Subtraction = " + (a - b));
+    }
+
+    @Override
+    public void multiply(double a, double b) {
+        System.out.println("Multiplication = " + (a * b));
+    }
+
+    @Override
+    public void divide(double a, double b) {
+        if (b != 0) {
+            System.out.println("Division = " + (a / b));
+        } else {
+            System.out.println("Error: Division by zero is invalid.");
+        }
+    }
+}
+
+// 3. Main execution class
+public class CalculatorDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Calculator calc = new SimpleCalculator();
+
+        // Getting input from the user
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("\n--- Results ---");
+        calc.add(num1, num2);
+        calc.subtract(num1, num2);
+        calc.multiply(num1, num2);
+        calc.divide(num1, num2);
+
+        scanner.close(); // Closing the scanner resource
+    }
+}
